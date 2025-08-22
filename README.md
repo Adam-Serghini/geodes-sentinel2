@@ -27,7 +27,7 @@ A Python package for searching, downloading, and processing Sentinel-2 satellite
 
 ## 📦 Installation
 
-### From PyPI (Coming Soon)
+### From PyPI
 
 ```bash
 pip install geodes-sentinel2
