@@ -1,0 +1,11 @@
+include README.md
+include LICENSE
+include requirements*.txt
+include .env.example
+recursive-include geodes_sentinel2 *.py
+recursive-include examples *.py *.geojson *.md
+recursive-include tests *.py
+recursive-include docs *.md *.rst
+global-exclude __pycache__
+global-exclude *.py[co]
+global-exclude .DS_Store

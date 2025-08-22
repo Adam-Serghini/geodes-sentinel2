@@ -1,0 +1,112 @@
+# Sentinel-2 GEODES Configuration File
+# Copy this to config.yaml and customize as needed
+
+# API Configuration
+api:
+  # Your GEODES API key (can also be set via GEODES_API_KEY env variable)
+  # key: "your-api-key-here"
+  base_url: "https://geodes-portal.cnes.fr"
+
+# Default Processing Parameters
+defaults:
+  # Maximum cloud cover percentage for searches
+  max_cloud_cover: 30.0
+  
+  # Default bands to process (if not specified in command)
+  # Leave empty to process all available bands
+  bands:
+    - B02  # Blue
+    - B03  # Green
+    - B04  # Red
+    - B08  # NIR
+    - B11  # SWIR1
+    - B12  # SWIR2
+  
+  # Default vegetation indices to calculate
+  indices:
+    - NDVI
+    - EVI
+    - NDWI
+  
+  # Whether to keep downloaded ZIP files by default
+  keep_downloads: true
+  
+  # Default output directory structure
+  output_structure:
+    downloads: "downloads"
+    crops: "crops"
+    indices: "indices"
+
+# Download Configuration
+download:
+  # Chunk size for downloads (bytes)
+  chunk_size: 8192
+  
+  # Number of retry attempts for failed downloads
+  max_retries: 3
+  
+  # Timeout for download requests (seconds)
+  timeout: 600
+  
+  # Show progress bar during downloads
+  show_progress: true
+
+# Processing Configuration
+processing:
+  # Compression method for output files
+  compression: "lzw"
+  
+  # Output format for rasters
+  output_format: "GeoTIFF"
+  
+  # Resampling method when bands have different resolutions
+  resampling_method: "bilinear"
+  
+  # Number of threads for parallel processing
+  num_threads: 4
+
+# Logging Configuration
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  
+  # Log file path (optional, logs to console if not set)
+  # file: "logs/geodes_sentinel2.log"
+  
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Search Configuration
+search:
+  # Default limit for search results
+  limit: 100
+  
+  # Default dataset to search
+  dataset: "PEPS_S2_L1C"
+  
+  # Sort results by
+  sort_by: "start_datetime"
+  sort_order: "asc"
+
+# Quality Control
+quality:
+  # Minimum valid pixel percentage to keep a crop
+  min_valid_pixels: 10.0
+  
+  # Check for corrupted downloads
+  verify_downloads: true
+  
+  # Validate output files
+  validate_outputs: true
+
+# Advanced Settings
+advanced:
+  # Use cache for repeated searches
+  use_cache: true
+  cache_expiry_hours: 24
+  
+  # Memory limit for processing (MB)
+  memory_limit: 4096
+  
+  # Temporary directory for processing
+  # temp_dir: "/tmp/geodes_sentinel2"

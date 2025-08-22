@@ -1,0 +1,1 @@
+"""Tests for geodes-sentinel2 package."""
